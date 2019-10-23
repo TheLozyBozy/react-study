@@ -9,7 +9,7 @@ class App extends React.Component {
             <React.Fragment>
                 <div className="catch-of-the-day">
                     <div className="menu">
-                         <Header tagline="Catch-of-the-day" age={500} />
+                         <Header tagline="Catch-of-the-day" age={500} checked={true}/>
                     </div>
                     <Inventory/>
                     <Order/>
