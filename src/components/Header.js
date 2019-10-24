@@ -12,7 +12,7 @@ const Header = ({tagline , age , checked}) =>  (
             </span> Day</h1> 
         <h3 className="tagline">
             <span>{tagline + age + checked} </span>
-        </h3>
+        </h3> 
     </header>
 )
 

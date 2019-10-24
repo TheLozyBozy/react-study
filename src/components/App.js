@@ -12,8 +12,8 @@ class App extends React.Component {
                     <div className="menu">
                          <Header tagline="Catch-of-the-day" age={500} checked={true}/>
                     </div>
-                    <Inventory/>
                     <Order/>
+                    <Inventory/>
                 </div>
             </React.Fragment>
         )
