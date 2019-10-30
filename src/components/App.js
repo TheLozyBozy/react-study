@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Inventory from './Inventory';
 import Order from './Order';
+import sampleFishes from '../sample-fishes';
 
 class App extends React.Component {
      /* If you wanna pass string use "" if number use {} */
@@ -31,6 +32,12 @@ class App extends React.Component {
 
     }
 
+    loadSampleFish = event => {
+        this.setState({
+            fishes: sampleFishes 
+        });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -39,7 +46,7 @@ class App extends React.Component {
                          <Header tagline="Catch-of-the-day" age={500} checked={true}/>
                     </div>
                     <Order/>
-                    <Inventory addFish = {this.addFish}/>
+                    <Inventory addFish = {this.addFish} loadSampleFish={this.loadSampleFish}/>
                 </div>
             </React.Fragment>
         )
