@@ -33,6 +33,29 @@ class App extends React.Component {
 
     }
 
+    addToOrder = (key) => {
+        // 1- take a copy of staut
+        const order = { ...this.state.order };
+
+        // 2- Ehier add or update the number in out order
+        
+        /* 
+
+            1 - first click is equal undefined and will choose the number one 
+
+            2 - second click in the same item, we will lock if it is not undefined then we will plus it to +1 
+
+            3 - after the click is happend the order[key] will eqaul 2 
+
+        
+        */
+        order[key] = order[key] + 1 || 1
+
+        // 3- call setState to update order state
+
+        this.setState({ order });
+    }
+
     loadSampleFish = () => {
         this.setState({
             fishes: sampleFishes 
@@ -47,7 +70,9 @@ class App extends React.Component {
                          <Header tagline="Catch-of-the-day" age={500} checked={true}/>
                          <ul className="fishes">
                              {
-                                 Object.keys(this.state.fishes).map(key=> <Fish key={key} details={this.state.fishes[key]}/>)
+                                 Object.keys(this.state.fishes).map(key=> <Fish key={key} index={key} details={this.state.fishes[key]}
+                                 addToOrder={this.addToOrder}
+                                 />)
                              }
                          </ul>
                     </div>
