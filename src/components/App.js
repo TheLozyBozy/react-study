@@ -4,7 +4,7 @@ import Inventory from './Inventory';
 import Order from './Order';
 import sampleFishes from '../sample-fishes';
 import Fish from "./Fish";
-
+import base from "../base";
 class App extends React.Component {
      /* If you wanna pass string use "" if number use {} */
 
@@ -12,6 +12,12 @@ class App extends React.Component {
         fishes: {},
         order: {}
     }
+    componentDidMount() {
+        const {params} = this.props.match;
+        console.log(this.props.match.params);
+        this.ref = base.syncState(`${params.storeId}/fishes` , {context: this , state:"fishes"});
+    }
+
 
     addFish = fish => {
         //1- Take a copy of the exisiting state
