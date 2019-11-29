@@ -24,6 +24,7 @@ class EditFishFoem extends React.Component {
                     </select>
                     <textarea name='desc' defaultValue={this.props.fish.desc} onChange={this.changeHandler}/>
                     <input type='text' name = 'image' defaultValue={this.props.fish.image} onChange={this.changeHandler}/>
+                    <button onClick = {()=> this.props.deleteFish(this.props.index)}>Remove Fish</button>
                 </div>
             </React.Fragment>
         );
