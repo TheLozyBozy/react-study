@@ -5,7 +5,6 @@ import Order from './Order';
 import sampleFishes from '../sample-fishes';
 import Fish from "./Fish";
 import base from "../base";
-import { stringify } from 'querystring';
 class App extends React.Component {
      /* If you wanna pass string use "" if number use {} */
 
@@ -23,8 +22,6 @@ class App extends React.Component {
         const  localStorageRef = localStorage.getItem(params.storeId);
         if(localStorageRef)
             this.setState({order : JSON.parse(localStorageRef)});
-        console.log(localStorageRef);
-        console.log(this.props.match.params);
         this.ref = base.syncState(`${params.storeId}/fishes` , {context: this , state:"fishes"});
     }
 
@@ -78,6 +75,17 @@ class App extends React.Component {
         });
     }
 
+    updateFish = (key , updatedFish) => {
+        // 1 - take a copy from state 
+        const fishes = {...this.state.fishes};
+
+        // 2 - update the fish
+        fishes[key] = updatedFish;
+
+         // 2 - set the state
+         this.setState({ fishes });
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -93,7 +101,9 @@ class App extends React.Component {
                          </ul>
                     </div>
                     <Order fish={this.state.fishes} order={this.state.order}/>
-                    <Inventory addFish = {this.addFish} loadSampleFish={this.loadSampleFish}/>
+                    <Inventory addFish = {this.addFish} loadSampleFish={this.loadSampleFish}
+                    fishes= {this.state.fishes} updateFish = {this.updateFish}
+                    />
                 </div>
             </React.Fragment>
         )
